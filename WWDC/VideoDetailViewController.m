@@ -8,6 +8,7 @@
 
 #import "VideoDetailViewController.h"
 #import "Header.h"
+#import "WWDC-Swift.h"
 
 @import AVKit;
 
@@ -17,9 +18,19 @@
 @property (nonatomic, weak) IBOutlet UILabel *sessionIDLabel;
 @property (nonatomic, weak) IBOutlet UILabel *descriptionLabel;
 @property (nonatomic, strong) NSDictionary *videoDictionary;
+@property (nonatomic, strong) AVPlayer *player;
 @end
 
 @implementation VideoDetailViewController
+
+- (void)setPlayer:(AVPlayer *)player
+{
+    if (_player) {
+        [_player removeObserver:self forKeyPath:@"rate"];
+    }
+    _player = player;
+    [_player addObserver:self forKeyPath:@"rate" options:NSKeyValueObservingOptionNew context:nil];
+}
 
 - (void)viewDidLoad
 {
@@ -48,11 +59,41 @@
 - (IBAction)playVideo:(id)sender
 {
     AVPlayerViewController *vc = [AVPlayerViewController new];
-    AVPlayer *player = [AVPlayer playerWithURL:[NSURL URLWithString:self.videoDictionary[kVideoURLKey]]];
-    vc.player = player;
+    self.player = [AVPlayer playerWithURL:[NSURL URLWithString:self.videoDictionary[kVideoURLKey]]];
+    vc.player = self.player;
     [self presentViewController:vc animated:true completion:^{
-        [player play];
+        [[VideoHistoryManager sharedManager] addVideo:[self createVideoHistory]];
+        [self.player play];
     }];
+}
+
+- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSString *,id> *)change context:(void *)context
+{
+    if (object == self.player && [keyPath isEqualToString:@"rate"]) {
+        if (self.player.rate == 0.0) {
+            VideoHistory *history = [self createVideoHistory];
+            [[VideoHistoryManager sharedManager] updateVideo:history];
+        }
+    }
+}
+
+- (UIImage *)snapshotImageWithCurrentFrame
+{
+    if (self.player.status != AVPlayerStatusReadyToPlay) {
+        return nil;
+    }
+    return nil;
+}
+
+- (VideoHistory *)createVideoHistory
+{
+    UIImage *image = [self snapshotImageWithCurrentFrame];
+    VideoHistory *history = [[VideoHistory alloc] initWithVideoId:[self.videoDictionary[@"orderId"] integerValue]
+                                                            title:self.videoDictionary[@"title"]
+                                                            cover:image
+                                                         videoUrl:self.videoDictionary[@"videoUrl"]];
+    history.videoDescription = self.videoDictionary[@"description"];
+    return history;
 }
 
 @end

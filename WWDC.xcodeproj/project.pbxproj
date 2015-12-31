@@ -10,13 +10,42 @@
 		541C84B11BFA953500FE5B5D /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 541C84B01BFA953500FE5B5D /* main.m */; };
 		541C84B41BFA953500FE5B5D /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 541C84B31BFA953500FE5B5D /* AppDelegate.m */; };
 		541C84BD1BFA953500FE5B5D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 541C84BB1BFA953500FE5B5D /* Main.storyboard */; };
-		541C84BF1BFA953500FE5B5D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 541C84BE1BFA953500FE5B5D /* Assets.xcassets */; };
 		541C84C91BFADEA400FE5B5D /* videos.json in Resources */ = {isa = PBXBuildFile; fileRef = 541C84C81BFADEA400FE5B5D /* videos.json */; };
 		541C84CC1BFAE25900FE5B5D /* VideoTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 541C84CB1BFAE25900FE5B5D /* VideoTableViewController.m */; };
 		541C84CF1BFAE2F000FE5B5D /* VideoDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 541C84CE1BFAE2F000FE5B5D /* VideoDetailViewController.m */; };
 		541C85481BFBE0F800FE5B5D /* screenshot04.png in Resources */ = {isa = PBXBuildFile; fileRef = 541C85461BFBE0F800FE5B5D /* screenshot04.png */; };
 		541C85491BFBE0F800FE5B5D /* screenshot03.png in Resources */ = {isa = PBXBuildFile; fileRef = 541C85471BFBE0F800FE5B5D /* screenshot03.png */; };
+		BB1C41D81C3423130094EB70 /* TVServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB2CD7A71C34199000394A03 /* TVServices.framework */; };
+		BB1C41DB1C3423130094EB70 /* ServiceProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB1C41DA1C3423130094EB70 /* ServiceProvider.swift */; };
+		BB1C41DF1C3423130094EB70 /* TopShelf.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = BB1C41D71C3423130094EB70 /* TopShelf.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		BB1C41E31C3423350094EB70 /* VideoHistoryManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB2CD7B51C341A4E00394A03 /* VideoHistoryManager.swift */; };
+		BB1C42491C34B4110094EB70 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BB1C42481C34B4110094EB70 /* Assets.xcassets */; };
+		BB2CD7B61C341A4E00394A03 /* VideoHistoryManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB2CD7B51C341A4E00394A03 /* VideoHistoryManager.swift */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		BB1C41DD1C3423130094EB70 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 541C84A41BFA953500FE5B5D /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = BB1C41D61C3423130094EB70;
+			remoteInfo = TopShelf;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		BB2CD7B31C34199000394A03 /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				BB1C41DF1C3423130094EB70 /* TopShelf.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		541C84AC1BFA953500FE5B5D /* WWDC.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WWDC.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -24,7 +53,6 @@
 		541C84B21BFA953500FE5B5D /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		541C84B31BFA953500FE5B5D /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		541C84BC1BFA953500FE5B5D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		541C84BE1BFA953500FE5B5D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		541C84C01BFA953500FE5B5D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		541C84C81BFADEA400FE5B5D /* videos.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = videos.json; sourceTree = "<group>"; };
 		541C84CA1BFAE25900FE5B5D /* VideoTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VideoTableViewController.h; sourceTree = "<group>"; };
@@ -34,6 +62,15 @@
 		541C84D01BFAF6DD00FE5B5D /* Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Header.h; sourceTree = "<group>"; };
 		541C85461BFBE0F800FE5B5D /* screenshot04.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = screenshot04.png; sourceTree = "<group>"; };
 		541C85471BFBE0F800FE5B5D /* screenshot03.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = screenshot03.png; sourceTree = "<group>"; };
+		BB1C41D71C3423130094EB70 /* TopShelf.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = TopShelf.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		BB1C41DA1C3423130094EB70 /* ServiceProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceProvider.swift; sourceTree = "<group>"; };
+		BB1C41DC1C3423130094EB70 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BB1C41E41C34237A0094EB70 /* TopShelf.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = TopShelf.entitlements; sourceTree = "<group>"; };
+		BB1C42481C34B4110094EB70 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		BB2CD7A71C34199000394A03 /* TVServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = TVServices.framework; path = System/Library/Frameworks/TVServices.framework; sourceTree = SDKROOT; };
+		BB2CD7B41C341A4E00394A03 /* WWDC-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "WWDC-Bridging-Header.h"; sourceTree = "<group>"; };
+		BB2CD7B51C341A4E00394A03 /* VideoHistoryManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoHistoryManager.swift; sourceTree = "<group>"; };
+		BB2CD7B81C34228800394A03 /* WWDC.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = WWDC.entitlements; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -44,6 +81,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		BB1C41D41C3423130094EB70 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BB1C41D81C3423130094EB70 /* TVServices.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -51,6 +96,8 @@
 			isa = PBXGroup;
 			children = (
 				541C84AE1BFA953500FE5B5D /* WWDC */,
+				BB1C41D91C3423130094EB70 /* TopShelf */,
+				BB2CD7A61C34199000394A03 /* Frameworks */,
 				541C84AD1BFA953500FE5B5D /* Products */,
 			);
 			sourceTree = "<group>";
@@ -59,6 +106,7 @@
 			isa = PBXGroup;
 			children = (
 				541C84AC1BFA953500FE5B5D /* WWDC.app */,
+				BB1C41D71C3423130094EB70 /* TopShelf.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -66,6 +114,9 @@
 		541C84AE1BFA953500FE5B5D /* WWDC */ = {
 			isa = PBXGroup;
 			children = (
+				BB1C42481C34B4110094EB70 /* Assets.xcassets */,
+				BB1C41E51C34B36B0094EB70 /* Resources */,
+				BB2CD7B81C34228800394A03 /* WWDC.entitlements */,
 				541C84B21BFA953500FE5B5D /* AppDelegate.h */,
 				541C84B31BFA953500FE5B5D /* AppDelegate.m */,
 				541C84CA1BFAE25900FE5B5D /* VideoTableViewController.h */,
@@ -73,6 +124,8 @@
 				541C84CD1BFAE2F000FE5B5D /* VideoDetailViewController.h */,
 				541C84CE1BFAE2F000FE5B5D /* VideoDetailViewController.m */,
 				541C84AF1BFA953500FE5B5D /* Supporting Files */,
+				BB2CD7B51C341A4E00394A03 /* VideoHistoryManager.swift */,
+				BB2CD7B41C341A4E00394A03 /* WWDC-Bridging-Header.h */,
 			);
 			path = WWDC;
 			sourceTree = "<group>";
@@ -81,7 +134,6 @@
 			isa = PBXGroup;
 			children = (
 				541C84BB1BFA953500FE5B5D /* Main.storyboard */,
-				541C84BE1BFA953500FE5B5D /* Assets.xcassets */,
 				541C84C01BFA953500FE5B5D /* Info.plist */,
 				541C84D01BFAF6DD00FE5B5D /* Header.h */,
 				541C84C81BFADEA400FE5B5D /* videos.json */,
@@ -90,6 +142,31 @@
 				541C85471BFBE0F800FE5B5D /* screenshot03.png */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		BB1C41D91C3423130094EB70 /* TopShelf */ = {
+			isa = PBXGroup;
+			children = (
+				BB1C41E41C34237A0094EB70 /* TopShelf.entitlements */,
+				BB1C41DA1C3423130094EB70 /* ServiceProvider.swift */,
+				BB1C41DC1C3423130094EB70 /* Info.plist */,
+			);
+			path = TopShelf;
+			sourceTree = "<group>";
+		};
+		BB1C41E51C34B36B0094EB70 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		BB2CD7A61C34199000394A03 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				BB2CD7A71C34199000394A03 /* TVServices.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -102,15 +179,34 @@
 				541C84A81BFA953500FE5B5D /* Sources */,
 				541C84A91BFA953500FE5B5D /* Frameworks */,
 				541C84AA1BFA953500FE5B5D /* Resources */,
+				BB2CD7B31C34199000394A03 /* Embed App Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				BB1C41DE1C3423130094EB70 /* PBXTargetDependency */,
 			);
 			name = WWDC;
 			productName = WWDC;
 			productReference = 541C84AC1BFA953500FE5B5D /* WWDC.app */;
 			productType = "com.apple.product-type.application";
+		};
+		BB1C41D61C3423130094EB70 /* TopShelf */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = BB1C41E01C3423130094EB70 /* Build configuration list for PBXNativeTarget "TopShelf" */;
+			buildPhases = (
+				BB1C41D31C3423130094EB70 /* Sources */,
+				BB1C41D41C3423130094EB70 /* Frameworks */,
+				BB1C41D51C3423130094EB70 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = TopShelf;
+			productName = TopShelf;
+			productReference = BB1C41D71C3423130094EB70 /* TopShelf.appex */;
+			productType = "com.apple.product-type.tv-app-extension";
 		};
 /* End PBXNativeTarget section */
 
@@ -118,11 +214,27 @@
 		541C84A41BFA953500FE5B5D /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				LastSwiftUpdateCheck = 0720;
 				LastUpgradeCheck = 0710;
 				ORGANIZATIONNAME = "Bronron Apps";
 				TargetAttributes = {
 					541C84AB1BFA953500FE5B5D = {
 						CreatedOnToolsVersion = 7.1;
+						DevelopmentTeam = FH9QG7ZJR9;
+						SystemCapabilities = {
+							com.apple.ApplicationGroups.iOS = {
+								enabled = 1;
+							};
+						};
+					};
+					BB1C41D61C3423130094EB70 = {
+						CreatedOnToolsVersion = 7.2;
+						DevelopmentTeam = FH9QG7ZJR9;
+						SystemCapabilities = {
+							com.apple.ApplicationGroups.iOS = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -140,6 +252,7 @@
 			projectRoot = "";
 			targets = (
 				541C84AB1BFA953500FE5B5D /* WWDC */,
+				BB1C41D61C3423130094EB70 /* TopShelf */,
 			);
 		};
 /* End PBXProject section */
@@ -149,11 +262,18 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				541C84BF1BFA953500FE5B5D /* Assets.xcassets in Resources */,
 				541C85481BFBE0F800FE5B5D /* screenshot04.png in Resources */,
 				541C84BD1BFA953500FE5B5D /* Main.storyboard in Resources */,
 				541C85491BFBE0F800FE5B5D /* screenshot03.png in Resources */,
+				BB1C42491C34B4110094EB70 /* Assets.xcassets in Resources */,
 				541C84C91BFADEA400FE5B5D /* videos.json in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BB1C41D51C3423130094EB70 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -168,10 +288,28 @@
 				541C84B41BFA953500FE5B5D /* AppDelegate.m in Sources */,
 				541C84CF1BFAE2F000FE5B5D /* VideoDetailViewController.m in Sources */,
 				541C84B11BFA953500FE5B5D /* main.m in Sources */,
+				BB2CD7B61C341A4E00394A03 /* VideoHistoryManager.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BB1C41D31C3423130094EB70 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BB1C41E31C3423350094EB70 /* VideoHistoryManager.swift in Sources */,
+				BB1C41DB1C3423130094EB70 /* ServiceProvider.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		BB1C41DE1C3423130094EB70 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = BB1C41D61C3423130094EB70 /* TopShelf */;
+			targetProxy = BB1C41DD1C3423130094EB70 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		541C84BB1BFA953500FE5B5D /* Main.storyboard */ = {
@@ -270,10 +408,19 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = "App Icon & Top Shelf Image";
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = WWDC/WWDC.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "iPhone Developer";
+				DEFINES_MODULE = YES;
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				INFOPLIST_FILE = WWDC/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.bronron.WWDC;
+				PRODUCT_BUNDLE_IDENTIFIER = in.fourplex.WWDCTV;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "WWDC/WWDC-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
@@ -282,10 +429,51 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = "App Icon & Top Shelf Image";
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = WWDC/WWDC.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "iPhone Developer";
+				DEFINES_MODULE = YES;
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				INFOPLIST_FILE = WWDC/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.bronron.WWDC;
+				PRODUCT_BUNDLE_IDENTIFIER = in.fourplex.WWDCTV;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "WWDC/WWDC-Bridging-Header.h";
+			};
+			name = Release;
+		};
+		BB1C41E11C3423130094EB70 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = TopShelf/TopShelf.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "iPhone Developer";
+				INFOPLIST_FILE = TopShelf/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = in.fourplex.WWDCTV.TopShelf;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TVOS_DEPLOYMENT_TARGET = 9.1;
+			};
+			name = Debug;
+		};
+		BB1C41E21C3423130094EB70 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = TopShelf/TopShelf.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "iPhone Developer";
+				INFOPLIST_FILE = TopShelf/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = in.fourplex.WWDCTV.TopShelf;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				SKIP_INSTALL = YES;
+				TVOS_DEPLOYMENT_TARGET = 9.1;
 			};
 			name = Release;
 		};
@@ -309,6 +497,14 @@
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
+		};
+		BB1C41E01C3423130094EB70 /* Build configuration list for PBXNativeTarget "TopShelf" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BB1C41E11C3423130094EB70 /* Debug */,
+				BB1C41E21C3423130094EB70 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
 		};
 /* End XCConfigurationList section */
 	};
