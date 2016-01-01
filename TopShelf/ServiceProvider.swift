@@ -39,16 +39,18 @@ class ServiceProvider: NSObject, TVTopShelfProvider {
             guard let dict = video as? NSDictionary else {
                 fatalError("cast video history")
             }
-            let url = dict["video_url"] as! String
+            let url = dict["videoUrl"] as! String
             let identifier = TVContentIdentifier(identifier: url, container: nil)
             guard let item = TVContentItem(contentIdentifier: identifier!) else {
                 fatalError("create conten item fail")
             }
             item.title = dict["title"] as? String
+            item.displayURL = self.displayUrl(dict)
             item.playURL = NSURL(string: url)
             item.imageShape = .ExtraWide
-            if let imageUrl = NSBundle.mainBundle().URLForResource("Iceland 1.jpg", withExtension: nil) {
-                item.imageURL = imageUrl
+            if let imageUrl = dict["imageUrl"] as? String {
+                let url = NSFileManager.defaultManager().containerURLForSecurityApplicationGroupIdentifier(VideoHistoryManager.kDefaultsKey)
+                item.imageURL = url?.URLByAppendingPathComponent(imageUrl)
             }
             
             return item
@@ -57,6 +59,18 @@ class ServiceProvider: NSObject, TVTopShelfProvider {
         sectionItem.topShelfItems = contentItems
         return [sectionItem]
     }
-
+    
+    private func displayUrl(history: NSDictionary) -> NSURL {
+        let components = NSURLComponents()
+        components.scheme = "wwdctv"
+        components.path = "history"
+        var queries: [NSURLQueryItem] = []
+        queries.append(NSURLQueryItem(name: "order_id", value: "\(history["videoId"] as? Int)"))
+        queries.append(NSURLQueryItem(name: "video_url", value: history["videoUrl"] as? String))
+        queries.append(NSURLQueryItem(name: "played", value: "\(history["played"] as? Int)"))
+        components.queryItems = queries
+        
+        return components.URL!
+    }
 }
 

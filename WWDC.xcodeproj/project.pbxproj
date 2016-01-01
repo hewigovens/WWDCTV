@@ -20,7 +20,10 @@
 		BB1C41DF1C3423130094EB70 /* TopShelf.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = BB1C41D71C3423130094EB70 /* TopShelf.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		BB1C41E31C3423350094EB70 /* VideoHistoryManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB2CD7B51C341A4E00394A03 /* VideoHistoryManager.swift */; };
 		BB1C42491C34B4110094EB70 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BB1C42481C34B4110094EB70 /* Assets.xcassets */; };
+		BB1C424C1C36090D0094EB70 /* AVPlayer+Snapshot.m in Sources */ = {isa = PBXBuildFile; fileRef = BB1C424B1C36090D0094EB70 /* AVPlayer+Snapshot.m */; };
 		BB2CD7B61C341A4E00394A03 /* VideoHistoryManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB2CD7B51C341A4E00394A03 /* VideoHistoryManager.swift */; };
+		BB6B2AFA1C36C9C500E34055 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB6B2AF91C36C9C500E34055 /* CloudKit.framework */; };
+		BB6B2AFB1C36C9E700E34055 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB6B2AF91C36C9C500E34055 /* CloudKit.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -67,10 +70,13 @@
 		BB1C41DC1C3423130094EB70 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BB1C41E41C34237A0094EB70 /* TopShelf.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = TopShelf.entitlements; sourceTree = "<group>"; };
 		BB1C42481C34B4110094EB70 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		BB1C424A1C36090D0094EB70 /* AVPlayer+Snapshot.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "AVPlayer+Snapshot.h"; sourceTree = "<group>"; };
+		BB1C424B1C36090D0094EB70 /* AVPlayer+Snapshot.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "AVPlayer+Snapshot.m"; sourceTree = "<group>"; };
 		BB2CD7A71C34199000394A03 /* TVServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = TVServices.framework; path = System/Library/Frameworks/TVServices.framework; sourceTree = SDKROOT; };
 		BB2CD7B41C341A4E00394A03 /* WWDC-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "WWDC-Bridging-Header.h"; sourceTree = "<group>"; };
 		BB2CD7B51C341A4E00394A03 /* VideoHistoryManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoHistoryManager.swift; sourceTree = "<group>"; };
 		BB2CD7B81C34228800394A03 /* WWDC.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = WWDC.entitlements; sourceTree = "<group>"; };
+		BB6B2AF91C36C9C500E34055 /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -78,6 +84,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BB6B2AFA1C36C9C500E34055 /* CloudKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -86,6 +93,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BB1C41D81C3423130094EB70 /* TVServices.framework in Frameworks */,
+				BB6B2AFB1C36C9E700E34055 /* CloudKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -126,6 +134,8 @@
 				541C84AF1BFA953500FE5B5D /* Supporting Files */,
 				BB2CD7B51C341A4E00394A03 /* VideoHistoryManager.swift */,
 				BB2CD7B41C341A4E00394A03 /* WWDC-Bridging-Header.h */,
+				BB1C424A1C36090D0094EB70 /* AVPlayer+Snapshot.h */,
+				BB1C424B1C36090D0094EB70 /* AVPlayer+Snapshot.m */,
 			);
 			path = WWDC;
 			sourceTree = "<group>";
@@ -164,6 +174,7 @@
 		BB2CD7A61C34199000394A03 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				BB6B2AF91C36C9C500E34055 /* CloudKit.framework */,
 				BB2CD7A71C34199000394A03 /* TVServices.framework */,
 			);
 			name = Frameworks;
@@ -225,6 +236,9 @@
 							com.apple.ApplicationGroups.iOS = {
 								enabled = 1;
 							};
+							com.apple.iCloud = {
+								enabled = 1;
+							};
 						};
 					};
 					BB1C41D61C3423130094EB70 = {
@@ -232,6 +246,9 @@
 						DevelopmentTeam = FH9QG7ZJR9;
 						SystemCapabilities = {
 							com.apple.ApplicationGroups.iOS = {
+								enabled = 1;
+							};
+							com.apple.iCloud = {
 								enabled = 1;
 							};
 						};
@@ -285,6 +302,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				541C84CC1BFAE25900FE5B5D /* VideoTableViewController.m in Sources */,
+				BB1C424C1C36090D0094EB70 /* AVPlayer+Snapshot.m in Sources */,
 				541C84B41BFA953500FE5B5D /* AppDelegate.m in Sources */,
 				541C84CF1BFAE2F000FE5B5D /* VideoDetailViewController.m in Sources */,
 				541C84B11BFA953500FE5B5D /* main.m in Sources */,
@@ -505,6 +523,7 @@
 				BB1C41E21C3423130094EB70 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
