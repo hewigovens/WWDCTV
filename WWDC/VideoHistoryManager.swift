@@ -11,45 +11,6 @@ import UIKit
 
 let kVideoHistoryKey = "kVideoHistoryKey"
 
-@objc public class VideoHistory: NSObject {
-    var title = ""
-    var videoDescription = ""
-    var imageUrl: String
-    var videoUrl: NSURL
-    var videoId: Int
-    var played: Double = 0.0
-    
-    init(videoId: Int, title: String, imageUrl: String, videoUrl: NSURL) {
-        self.videoId = videoId
-        self.title = title
-        self.imageUrl = imageUrl
-        self.videoUrl = videoUrl
-        
-        super.init()
-    }
-    
-    init(dictionary: NSDictionary) {
-        self.videoId = dictionary["videoId"] as! Int
-        self.videoUrl = dictionary["videoUrl"] as! NSURL
-        self.title = dictionary["title"] as! String
-        self.videoDescription = dictionary["description"] as! String
-        self.played = dictionary["played"] as! Double
-        self.imageUrl = dictionary["imageUrl"] as! String
-        super.init()
-    }
-    
-    public func toNSDictionary() -> NSDictionary {
-        let dictionary = NSMutableDictionary()
-        dictionary["title"] = self.title
-        dictionary["description"] = self.videoDescription
-        dictionary["videoId"] = self.videoId
-        dictionary["played"] = self.played
-        dictionary["videoUrl"] = self.videoUrl
-        dictionary["imageUrl"] = self.imageUrl
-        return NSDictionary(dictionary: dictionary)
-    }
-}
-
 @objc public class VideoHistoryManager: NSObject {
     static let sharedManager = VideoHistoryManager()
     static let defaults = NSUserDefaults(suiteName: kDefaultsKey)!
@@ -66,22 +27,30 @@ let kVideoHistoryKey = "kVideoHistoryKey"
         if let oldHistory = self.defaults.arrayForKey(kVideoHistoryKey) as? [NSDictionary] {
             history += oldHistory
         }
+        
+        var existed: NSMutableDictionary?
+
+        // filter out same id history
         history = history.filter({ (history) -> Bool in
             if let videoId = history["videoId"] as? Int {
                 if videoId == video.videoId {
+                    existed = NSMutableDictionary(dictionary: history)
                     return false
                 }
             }
             return true
         })
-        history.insert(video.toNSDictionary(), atIndex: 0)
+        
+        if existed == nil {
+            history.insert(video.toNSDictionary(), atIndex: 0)
+        } else {
+            existed!["imageUrl"] = video.imageUrl
+            existed!["played"] = video.played
+        }
+        
         let ordered = NSOrderedSet(array: history as [NSDictionary])
         self.defaults.setObject(ordered.array, forKey: kVideoHistoryKey)
         self.defaults.synchronize()
-    }
-    
-    public func updateVideo(video: VideoHistory) {
-        
     }
     
     public func videoHistory() -> NSArray {

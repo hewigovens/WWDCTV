@@ -29,7 +29,7 @@ class ServiceProvider: NSObject, TVTopShelfProvider {
 
     var topShelfItems: [TVContentItem] {
         let history = VideoHistoryManager.sharedManager.videoHistory()
-        print("get history = \(history.count)")
+        print("video history count = \(history.count)")
         
         let sectionId = TVContentIdentifier(identifier: SectionIdentifier.History.rawValue, container: nil)
         let sectionItem = TVContentItem(contentIdentifier: sectionId!)!
@@ -44,13 +44,17 @@ class ServiceProvider: NSObject, TVTopShelfProvider {
             guard let item = TVContentItem(contentIdentifier: identifier!) else {
                 fatalError("create conten item fail")
             }
-            item.title = dict["title"] as? String
+            item.title = "\(dict["sessionId"] as? String) \(dict["title"] as? String)"
             item.displayURL = self.displayUrl(dict)
             item.playURL = NSURL(string: url)
             item.imageShape = .ExtraWide
             if let imageUrl = dict["imageUrl"] as? String {
-                let url = NSFileManager.defaultManager().containerURLForSecurityApplicationGroupIdentifier(VideoHistoryManager.kDefaultsKey)
-                item.imageURL = url?.URLByAppendingPathComponent(imageUrl)
+                if imageUrl.hasPrefix("http") {
+                    item.imageURL = NSURL(string: imageUrl)
+                } else {
+                    let url = NSFileManager.defaultManager().containerURLForSecurityApplicationGroupIdentifier(VideoHistoryManager.kDefaultsKey)
+                    item.imageURL = url?.URLByAppendingPathComponent(imageUrl)
+                }
             }
             
             return item

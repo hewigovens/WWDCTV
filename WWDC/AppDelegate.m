@@ -9,11 +9,11 @@
 #import "AppDelegate.h"
 #import "Header.h"
 #import "VideoTableViewController.h"
-
-@import AVKit;
+#import "WWDC-Swift.h"
 
 @interface AppDelegate ()
 @property (nonatomic, strong) UITabBarController *tabBarController;
+@property (nonatomic, strong) VideoPlayer *videoPlayer;
 @end
 
 @implementation AppDelegate
@@ -78,19 +78,21 @@
 {
     NSLog(@"open from top shelf %@", url);
     NSURLComponents *components = [[NSURLComponents alloc] initWithURL:url resolvingAgainstBaseURL:NO];
-    NSURLQueryItem *item = nil;
+    NSMutableDictionary *dict = [NSMutableDictionary new];
+    
     for (NSURLQueryItem *query in components.queryItems) {
-        if ([query.name isEqualToString:@"video_url"]) {
-            item = query;
-            break;
-        }
+        dict[query.name] = query.value;
     }
-    if (item) {
-        AVPlayerViewController *vc = [AVPlayerViewController new];
-        vc.player = [AVPlayer playerWithURL:[NSURL URLWithString:item.value]];
-        [self.tabBarController presentViewController:vc animated:YES completion:^{
-            [vc.player play];
-        }];
+    
+    if (dict[@"video_url"]) {
+        NSURL *videoUrl = [NSURL URLWithString:dict[@"video_url"]];
+        NSNumber *videoId = dict[@"order_id"];
+        self.videoPlayer = [[VideoPlayer alloc] initWithUrl:videoUrl parentViewController:self.tabBarController];
+        self.videoPlayer.videoHistory = [[VideoHistory alloc] initWithVideoId:[videoId integerValue]
+                                                                        title:@""
+                                                                     imageUrl:@""
+                                                                     videoUrl:videoUrl];
+        [self.videoPlayer play];
     }
 
     return YES;
