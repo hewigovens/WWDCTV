@@ -58,7 +58,6 @@
                                                             title:self.videoDictionary[kTitleKey]
                                                          imageUrl:@""
                                                          videoUrl:self.videoDictionary[kVideoURLKey]];
-    history.played = 0.0;
     history.sessionId = self.videoDictionary[kSessionIDKey];
     history.videoDescription = self.videoDictionary[kDescriptionKey];
     

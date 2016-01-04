@@ -88,7 +88,7 @@ import AVKit
                 }
             }
             let time = self.player.currentTime()
-            self.videoHistory?.played =  Double(time.value / Int64(time.timescale))
+            self.videoHistory?.played =  CMTimeWrapper(value: time.value, scale: time.timescale, epoch: time.epoch, flag: time.flags)
             self.videoHistory?.imageUrl = "\(orderId).jpg";
             VideoHistoryManager.sharedManager.addVideo(self.videoHistory!)
         }
