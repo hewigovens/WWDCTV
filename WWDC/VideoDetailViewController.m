@@ -54,12 +54,16 @@
                                    parentViewController:self];
     
     NSNumber *orderId = self.videoDictionary[kOrderIDKey];
-    VideoHistory *history = [[VideoHistory alloc] initWithVideoId:orderId.integerValue
+    
+    VideoHistory *history = [[VideoHistoryManager sharedManager] videoHistory:orderId.integerValue];
+    if (!history) {
+        history = [[VideoHistory alloc] initWithVideoId:orderId.integerValue
                                                             title:self.videoDictionary[kTitleKey]
                                                          imageUrl:@""
-                                                         videoUrl:self.videoDictionary[kVideoURLKey]];
-    history.sessionId = self.videoDictionary[kSessionIDKey];
-    history.videoDescription = self.videoDictionary[kDescriptionKey];
+                                 videoUrl:self.videoDictionary[kVideoURLKey]];
+        history.sessionId = self.videoDictionary[kSessionIDKey];
+        history.videoDescription = self.videoDictionary[kDescriptionKey];
+    }
     
     self.videoPlayer.videoHistory = history;
     [self.videoPlayer play];

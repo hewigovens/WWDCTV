@@ -59,4 +59,9 @@ let kVideoHistoryKey = "kVideoHistoryKey"
         }
         return NSArray()
     }
+    
+    // todo
+    public func videoHistory(videoId: Int) -> VideoHistory? {
+        return nil
+    }
 }

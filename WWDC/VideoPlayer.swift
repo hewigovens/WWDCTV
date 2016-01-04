@@ -52,10 +52,27 @@ import AVKit
     }
     
     public func play() {
-        self.parentViewController?.presentViewController(self.playViewController, animated: true, completion:
+        
+        if let played = self.videoHistory?.played {
+            if played.value > 0 && played.scale > 0 {
+                let alert = UIAlertController(title: "Continue Playing",
+                                            message: "Last watched seconds \(played.value / Int64(played.scale))",
+                                     preferredStyle: .Alert)
+                alert.addAction(UIAlertAction(title: "YES", style: .Default, handler: { (_) -> Void in
+                    // todo
+                }))
+                
+                alert.addAction(UIAlertAction(title: "NO", style: .Cancel, handler: { (_) -> Void in
+                    // todo
+                }))
+            }
+        } else {
+        
+            self.parentViewController?.presentViewController(self.playViewController, animated: true, completion:
             { () -> Void in
-            self.player.play()
-        })
+                self.player.play()
+            })
+        }
     }
     
     public func snapshot() -> UIImage? {
@@ -69,6 +86,8 @@ import AVKit
                                     CGFloat(CVPixelBufferGetHeight(pixelBuffer!)))
         let imageRef = context.createCGImage(ciImage, fromRect: rect)
         let image = UIImage(CGImage: imageRef)
+        
+        //todo crop to fit top shelf
         
         return image
     }
