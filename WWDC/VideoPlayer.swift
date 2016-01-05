@@ -54,9 +54,9 @@ import AVKit
     public func play() {
         
         if let played = self.videoHistory?.played {
-            if played.value > 0 && played.scale > 0 {
+            if played.value > 0 && played.timescale > 0 {
                 let alert = UIAlertController(title: "Continue Playing",
-                                            message: "Last watched seconds \(played.value / Int64(played.scale))",
+                                            message: "Last watched seconds \(played.value / Int64(played.timescale))",
                                      preferredStyle: .Alert)
                 alert.addAction(UIAlertAction(title: "YES", style: .Default, handler: { (_) -> Void in
                     // todo
@@ -107,7 +107,7 @@ import AVKit
                 }
             }
             let time = self.player.currentTime()
-            self.videoHistory?.played =  CMTimeWrapper(value: time.value, scale: time.timescale, epoch: time.epoch, flag: time.flags)
+            self.videoHistory?.played = time
             self.videoHistory?.imageUrl = "\(orderId).jpg";
             VideoHistoryManager.sharedManager.addVideo(self.videoHistory!)
         }

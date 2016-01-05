@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+import AVFoundation
 
 let kVideoHistoryKey = "kVideoHistoryKey"
 
@@ -45,7 +46,7 @@ let kVideoHistoryKey = "kVideoHistoryKey"
             history.insert(video.toNSDictionary(), atIndex: 0)
         } else {
             existed!["imageUrl"] = video.imageUrl
-            existed!["played"] = video.played
+            existed!["played"] = CMTimeCopyAsDictionary(video.played, nil)
         }
         
         let ordered = NSOrderedSet(array: history as [NSDictionary])
