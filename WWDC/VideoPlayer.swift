@@ -53,25 +53,32 @@ import AVKit
     
     public func play() {
         
+        let _play: (atTime: CMTime?) -> Void = { atTime in
+            self.parentViewController?.presentViewController(self.playViewController, animated: true, completion:
+            { () -> Void in
+                if let time = atTime {
+                    self.player.seekToTime(time)
+                } else {
+                    self.player.play()
+                }
+            })
+        }
+        
         if let played = self.videoHistory?.played {
             if played.value > 0 && played.timescale > 0 {
                 let alert = UIAlertController(title: "Continue Playing",
                                             message: "Last watched seconds \(played.value / Int64(played.timescale))",
                                      preferredStyle: .Alert)
                 alert.addAction(UIAlertAction(title: "YES", style: .Default, handler: { (_) -> Void in
-                    // todo
+                    _play(atTime: played)
                 }))
                 
                 alert.addAction(UIAlertAction(title: "NO", style: .Cancel, handler: { (_) -> Void in
-                    // todo
+                    _play(atTime: nil)
                 }))
             }
         } else {
-        
-            self.parentViewController?.presentViewController(self.playViewController, animated: true, completion:
-            { () -> Void in
-                self.player.play()
-            })
+            _play(atTime: nil)
         }
     }
     
@@ -87,7 +94,9 @@ import AVKit
         let imageRef = context.createCGImage(ciImage, fromRect: rect)
         let image = UIImage(CGImage: imageRef)
         
-        //todo crop to fit top shelf
+        // https://developer.apple.com/tvos/human-interface-guidelines/icons-and-images/#top-shelf
+        // section item actual size is 404 x 608
+        // todo resize or crop it
         
         return image
     }

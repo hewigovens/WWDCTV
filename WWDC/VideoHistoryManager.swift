@@ -61,8 +61,17 @@ let kVideoHistoryKey = "kVideoHistoryKey"
         return NSArray()
     }
     
-    // todo
     public func videoHistory(videoId: Int) -> VideoHistory? {
+        let array = self.videoHistory()
+        for obj in array {
+            if let history = obj as? NSDictionary {
+                if let id = history["videoId"] as? Int {
+                    if id == videoId {
+                        return VideoHistory(dictionary: history)
+                    }
+                }
+            }
+        }
         return nil
     }
 }

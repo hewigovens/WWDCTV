@@ -23,7 +23,23 @@ import AVFoundation
         self.title = title
         self.imageUrl = imageUrl
         self.videoUrl = videoUrl
-        self.played = CMTime()
+        self.played = CMTimeMake(0, 1)
+        super.init()
+    }
+    
+    init(dictionary: NSDictionary) {
+        self.videoId = dictionary["videoId"] as! Int
+        self.videoUrl = dictionary["videoUrl"] as! NSURL
+        self.title = dictionary["title"] as! String
+        self.videoDescription = dictionary["description"] as! String
+        if let d = dictionary["played"] as! CFDictionary? {
+            self.played = CMTimeMakeFromDictionary(d)
+        } else {
+            self.played = CMTimeMake(0, 1)
+        }
+        
+        self.imageUrl = dictionary["imageUrl"] as! String
+        self.sessionId = dictionary["sessionId"] as! String
         super.init()
     }
     
